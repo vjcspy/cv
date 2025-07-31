@@ -284,6 +284,28 @@ const CV = () => {
           </div>
         </div>
       </div>
+      
+      {/* Floating PDF Download Button */}
+      <a 
+        href="/cv.pdf" 
+        download="Jill_Morgan_CV.pdf"
+        className="fixed bottom-5 right-5 z-50 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-full shadow-lg flex items-center gap-2 transition-all duration-200 hover:scale-105 no-print"
+        title="Download CV as PDF"
+      >
+        <svg 
+          className="w-5 h-5" 
+          fill="currentColor" 
+          viewBox="0 0 20 20" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path 
+            fillRule="evenodd" 
+            d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" 
+            clipRule="evenodd" 
+          />
+        </svg>
+        <span className="font-medium">PDF</span>
+      </a>
     </div>
   );
 };
