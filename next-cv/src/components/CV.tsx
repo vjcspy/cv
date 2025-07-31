@@ -2,8 +2,8 @@ import React from 'react';
 
 const CV = () => {
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-2xl mx-auto bg-white shadow-lg">
+    <div className="min-h-screen bg-gray-50 py-8 font-[family-name:var(--font-jetbrains-mono)]">
+      <div className="max-w-4xl mx-auto bg-white shadow-lg">
         {/* Header Section */}
         <div className="bg-blue-600 text-white p-8">
           <h1 className="text-3xl font-bold mb-2">JILL MORGAN</h1>
@@ -32,6 +32,116 @@ const CV = () => {
             comprehensive marketing strategies. Proven track record of increasing brand awareness by 40% 
             and driving revenue growth through innovative digital campaigns and cross-functional collaboration.
           </p>
+        </div>
+
+        {/* Skills Section */}
+        <div className="p-8 border-b border-gray-200">
+          <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
+            <span className="text-blue-600 text-2xl mr-3">♦</span>
+            SKILLS
+          </h2>
+          
+          <div className="relative">
+            {/* Continuous timeline line */}
+            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-blue-600"></div>
+            
+            <div className="space-y-8 text-sm">
+              {/* Frontend/Client-side */}
+              <div className="flex">
+                <div className="flex flex-col items-center mr-6 relative z-10">
+                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm font-bold">💻</span>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Frontend/Client-side</h3>
+                  <p className="text-gray-700 mb-4 leading-relaxed">
+                    Extensive experience building diverse client-side apps (web, SPAs, micro frontends, server-side rendering) for high-traffic e-commerce and banking, delivering scalable UIs for millions of users.
+                  </p>
+                  <div className="space-y-3">
+                    <div>
+                      <strong className="text-gray-800">JavaScript/TypeScript:</strong>
+                      <span className="text-gray-700"> Angular, React, Next.js, Electron, React Native, RxJS, Redux – Optimized for interactive platforms, real-time dashboards, and cross-platform compatibility.</span>
+                    </div>
+                    <div>
+                      <strong className="text-gray-800">C#:</strong>
+                      <span className="text-gray-700"> Avalonia – For desktop apps with seamless backend integration and high-performance rendering.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Server/Application */}
+              <div className="flex">
+                <div className="flex flex-col items-center mr-6 relative z-10">
+                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm font-bold">⚙️</span>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Server/Application</h3>
+                  <p className="text-gray-700 mb-4 leading-relaxed">
+                    Versatile expertise in multiple languages for scalable backends handling high concurrency, real-time processing, and secure transactions in finance, gaming, and trading.
+                  </p>
+                  <div className="space-y-3">
+                    <div>
+                      <strong className="text-gray-800">Node.js:</strong>
+                      <span className="text-gray-700"> HTTP servers for banking, real-time (Meteor), game servers for Unity – Optimized for low-latency in high-stakes environments.</span>
+                    </div>
+                    <div>
+                      <strong className="text-gray-800">C#:</strong>
+                      <span className="text-gray-700"> Unity apps – Focused on game logic, multiplayer, and cross-platform deployment.</span>
+                    </div>
+                    <div>
+                      <strong className="text-gray-800">Java:</strong>
+                      <span className="text-gray-700"> Quarkus, Spring Boot for banking microservices – Enhanced security and scalability for enterprise transactions.</span>
+                    </div>
+                    <div>
+                      <strong className="text-gray-800">PHP:</strong>
+                      <span className="text-gray-700"> Magento 2 (Adobe) for e-commerce – Improved performance and payment integrations.</span>
+                    </div>
+                    <div>
+                      <strong className="text-gray-800">Python:</strong>
+                      <span className="text-gray-700"> Automated trading systems for crypto markets – With data analysis and API for high-frequency efficiency.</span>
+                    </div>
+                    <div>
+                      <strong className="text-gray-800">Databases:</strong>
+                      <span className="text-gray-700"> PostgreSQL, MySQL – Schema design, query optimization, and data management for large-scale apps.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Infrastructure */}
+              <div className="flex">
+                <div className="flex flex-col items-center mr-6 relative z-10">
+                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm font-bold">🏗️</span>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Infrastructure (Infra)</h3>
+                  <p className="text-gray-700 mb-4 leading-relaxed">
+                    Proven expertise in enterprise infra management for tens of millions of users, focusing on reliability, scalability, and automation with key certifications.
+                  </p>
+                  <div className="space-y-3">
+                    <div>
+                      <strong className="text-gray-800">Cloud:</strong>
+                      <span className="text-gray-700"> AWS (Certified Developer/Solutions Architect) – Deployed scalable setups with cost optimization and security.</span>
+                    </div>
+                    <div>
+                      <strong className="text-gray-800">DevOps & Orchestration:</strong>
+                      <span className="text-gray-700"> Jenkins, Harness (Certified), Kubernetes (Certified), Terraform (Certified) – Automated CI/CD, container deployments, and IaC for zero-downtime scaling.</span>
+                    </div>
+                    <div>
+                      <strong className="text-gray-800">Networking & Servers:</strong>
+                      <span className="text-gray-700"> Configured clusters, load balancing, and monitoring – Ensured high availability and reduced downtime in distributed systems.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Experience Section */}
@@ -113,7 +223,7 @@ const CV = () => {
         </div>
 
         {/* Education Section */}
-        <div className="p-8 border-b border-gray-200">
+        <div className="p-8">
           <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
             <span className="text-blue-600 text-2xl mr-3">♦</span>
             EDUCATION
@@ -134,81 +244,6 @@ const CV = () => {
                 <p className="text-gray-600 italic">Penn State University, Philadelphia, PA</p>
                 <p className="text-gray-700 text-sm mt-1"><strong>Relevant Coursework:</strong> Professional Selling, Sales Management, Advanced Sales & Selling Techniques, Cloud-Based CRM Systems.</p>
                 <p className="text-gray-700 text-sm"><strong>Minor:</strong> Leadership & Communication.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Skills Section */}
-        <div className="p-8">
-          <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-            <span className="text-blue-600 text-2xl mr-3">♦</span>
-            SKILLS
-          </h2>
-          <div className="relative">
-            {/* Continuous timeline line */}
-            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-blue-600"></div>
-            
-            <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-6 relative z-10">
-                    <span className="text-white text-sm font-bold">🎯</span>
-                  </div>
-                  <span className="text-gray-700">Lead Qualification & Prospecting</span>
-                </div>
-                <div className="flex space-x-1">
-                  <span className="text-blue-600">♦</span>
-                  <span className="text-blue-600">♦</span>
-                  <span className="text-blue-600">♦</span>
-                  <span className="text-blue-600">♦</span>
-                  <span className="text-blue-600">♦</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-6 relative z-10">
-                    <span className="text-white text-sm font-bold">💻</span>
-                  </div>
-                  <span className="text-gray-700">Salesforce & Hubspot CRM</span>
-                </div>
-                <div className="flex space-x-1">
-                  <span className="text-blue-600">♦</span>
-                  <span className="text-blue-600">♦</span>
-                  <span className="text-blue-600">♦</span>
-                  <span className="text-blue-600">♦</span>
-                  <span className="text-gray-300">♦</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-6 relative z-10">
-                    <span className="text-white text-sm font-bold">📈</span>
-                  </div>
-                  <span className="text-gray-700">Optimizing MRR</span>
-                </div>
-                <div className="flex space-x-1">
-                  <span className="text-blue-600">♦</span>
-                  <span className="text-blue-600">♦</span>
-                  <span className="text-blue-600">♦</span>
-                  <span className="text-gray-300">♦</span>
-                  <span className="text-gray-300">♦</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-6 relative z-10">
-                    <span className="text-white text-sm font-bold">🤝</span>
-                  </div>
-                  <span className="text-gray-700">Contract Negotiation</span>
-                </div>
-                <div className="flex space-x-1">
-                  <span className="text-blue-600">♦</span>
-                  <span className="text-blue-600">♦</span>
-                  <span className="text-blue-600">♦</span>
-                  <span className="text-gray-300">♦</span>
-                  <span className="text-gray-300">♦</span>
-                </div>
               </div>
             </div>
           </div>
