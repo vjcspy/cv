@@ -238,18 +238,47 @@ const CV = () => {
             {/* Continuous timeline line */}
             <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-blue-600"></div>
             
-            <div className="flex">
+            {/* Academy of Finance */}
+            <div className="flex mb-8">
               <div className="flex flex-col items-center mr-6 relative z-10">
                 <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
                   <span className="text-white text-sm font-bold">🎓</span>
                 </div>
               </div>
               <div className="flex-1">
-                <span className="text-gray-500 text-sm font-medium">2016</span>
-                <h3 className="font-semibold text-gray-800">BSc in Marketing, Major in Professional Sales</h3>
-                <p className="text-gray-600 italic">Penn State University, Philadelphia, PA</p>
-                <p className="text-gray-700 text-sm mt-1"><strong>Relevant Coursework:</strong> Professional Selling, Sales Management, Advanced Sales & Selling Techniques, Cloud-Based CRM Systems.</p>
-                <p className="text-gray-700 text-sm"><strong>Minor:</strong> Leadership & Communication.</p>
+                <h3 className="font-semibold text-gray-800">Academy of Finance</h3>
+                <p className="text-gray-600 italic">Securities Specialization</p>
+                <p className="text-gray-700 text-sm mt-1"><strong>Focus:</strong> Financial markets, investment analysis, securities trading, and portfolio management.</p>
+              </div>
+            </div>
+
+            {/* Certifications */}
+            <div className="flex">
+              <div className="flex flex-col items-center mr-6 relative z-10">
+                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">📜</span>
+                </div>
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-gray-800">Professional Certifications</h3>
+                <div className="space-y-2 mt-2">
+                  <div className="flex items-center">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span className="text-gray-700 text-sm"><strong>AWS Certified:</strong> Cloud Solutions Architecture and Development</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span className="text-gray-700 text-sm"><strong>Harness Certified:</strong> Continuous Delivery and DevOps Platform</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span className="text-gray-700 text-sm"><strong>Kubernetes (K8S) Certified:</strong> Container Orchestration and Management</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span className="text-gray-700 text-sm"><strong>Terraform Certified:</strong> Infrastructure as Code and Cloud Automation</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
