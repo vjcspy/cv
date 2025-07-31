@@ -5,9 +5,18 @@ const CV = () => {
     <div className="min-h-screen bg-gray-50 py-8 font-[family-name:var(--font-jetbrains-mono)]">
       <div className="max-w-4xl mx-auto bg-white shadow-lg">
         {/* Header Section */}
-        <div className="bg-blue-600 text-white p-8">
-          <h1 className="text-3xl font-bold mb-2">JILL MORGAN</h1>
-          <p className="text-blue-100 text-lg">Marketing Manager</p>
+        <div className="bg-blue-600 text-white flex">
+          {/* Profile Image Placeholder */}
+           <div className="bg-white/20 flex items-center justify-center flex-shrink-0" style={{width: '150px'}}>
+            <div className="w-full h-full bg-blue-800 flex items-center justify-center text-white text-xs font-bold">
+                PHOTO<br/>150px
+            </div>
+          </div>
+          {/* Name and Title */}
+          <div className="flex-1 p-8 flex flex-col justify-center">
+            <h1 className="text-3xl font-bold mb-2">JILL MORGAN</h1>
+            <p className="text-blue-100 text-lg">Marketing Manager</p>
+          </div>
         </div>
 
         {/* Contact Information */}
@@ -26,11 +35,8 @@ const CV = () => {
 
         {/* Summary Section */}
         <div className="p-8 border-b border-gray-200">
-          <h2 className="text-xl font-bold text-gray-800 mb-4">SUMMARY</h2>
           <p className="text-gray-700 leading-relaxed">
-            Results-driven Marketing Manager with 8+ years of experience in developing and executing 
-            comprehensive marketing strategies. Proven track record of increasing brand awareness by 40% 
-            and driving revenue growth through innovative digital campaigns and cross-functional collaboration.
+            I am a deeply passionate technologist, dedicating most of my time to immersing myself in learning and developing software. With 5+ years as an expert full-stack developer in high-traffic e-commerce and banking sectors, my philosophy centers on focused clarity—selecting optimal tools and strategies to solve complex problems efficiently. I deliver solutions that are not just technically sound, but elegant and valuable, driving real impact for teams and millions of users.
           </p>
         </div>
 
