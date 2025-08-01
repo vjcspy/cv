@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 
 const CV = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -19,16 +20,19 @@ const CV = () => {
       >
         {/* Header Section */}
         <div className="bg-blue-600 text-white flex">
-          {/* Profile Image Placeholder */}
+          {/* Profile Image */}
           <div
-            className="bg-white/20 flex items-center justify-center flex-shrink-0"
-            style={{ width: "150px" }}
+            className="flex items-center justify-center flex-shrink-0 overflow-hidden"
+            style={{ width: "150px", height: "150px" }}
           >
-            <div className="w-full h-full bg-blue-800 flex items-center justify-center text-white text-xs font-bold">
-              PHOTO
-              <br />
-              150px
-            </div>
+            <Image
+              src="/avatar.jpg"
+              alt="Dinh Khoi Profile"
+              width={150}
+              height={150}
+              className="object-cover"
+              priority
+            />
           </div>
           {/* Name and Title */}
           <div className="flex-1 p-8 flex flex-col justify-center">
