@@ -736,12 +736,13 @@ const CV = () => {
         {/* Dark Mode Toggle Button */}
         <button
           onClick={toggleDarkMode}
-          className={`px-4 py-3 rounded-full shadow-lg flex items-center gap-2 transition-all duration-200 hover:scale-105 ${
+          className={`min-w-[48px] min-h-[48px] px-5 py-4 rounded-full shadow-lg flex items-center justify-center gap-2 transition-all duration-200 hover:scale-105 active:scale-95 touch-manipulation ${
             isDarkMode
               ? "bg-yellow-500 hover:bg-yellow-600 text-gray-900"
               : "bg-gray-700 hover:bg-gray-800 text-white"
           }`}
           title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          aria-label={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
         >
           {isDarkMode ? (
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -761,9 +762,11 @@ const CV = () => {
         {/* PDF Download Button */}
         <a
           href="/cv.pdf"
-          download="Jill_Morgan_CV.pdf"
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-full shadow-lg flex items-center gap-2 transition-all duration-200 hover:scale-105"
+          download="Dinh_Khoi_CV.pdf"
+          className="min-w-[48px] min-h-[48px] px-5 py-4 rounded-full shadow-lg flex items-center justify-center gap-2 transition-all duration-200 hover:scale-105 active:scale-95 touch-manipulation"
+          style={{backgroundColor: '#F4AC62'}}
           title="Download CV as PDF"
+          aria-label="Download CV as PDF"
         >
           <svg
             className="w-5 h-5"
