@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Jill Morgan - Marketing Manager | Professional CV</title>
+        <title>Dinh Khoi - Senior Engineer | Professional CV</title>
       </Head>
       <CV />
     </>
