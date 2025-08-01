@@ -43,10 +43,10 @@ const CV = () => {
             isDarkMode ? "border-gray-600" : "border-gray-200"
           }`}
         >
-          <div className="grid grid-cols-2 gap-4 text-sm">
+          <div className="grid grid-cols-1 gap-4 text-sm">
             <div>
               <p
-                className={`transition-colors duration-300 ${
+                className={`mb-3 transition-colors duration-300 ${
                   isDarkMode ? "text-gray-300" : "text-gray-600"
                 }`}
               >
@@ -58,20 +58,6 @@ const CV = () => {
                 }`}
               >
                 Email: dinhkhoi.le1996@gmail.com
-              </p>
-            </div>
-            <div>
-              <p
-                className={`transition-colors duration-300 ${
-                  isDarkMode ? "text-gray-300" : "text-gray-600"
-                }`}
-              >
-              </p>
-              <p
-                className={`transition-colors duration-300 ${
-                  isDarkMode ? "text-gray-300" : "text-gray-600"
-                }`}
-              >
               </p>
             </div>
           </div>
