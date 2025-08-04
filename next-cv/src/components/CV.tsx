@@ -79,7 +79,7 @@ const CV = () => {
             }`}
           >
             I am a deeply passionate technologist, dedicating most of my time to
-            immersing myself in learning and developing software. With 7+ years
+            immersing myself in learning and developing software. With 10+ years
             as an expert full-stack developer in high-traffic e-commerce and
             banking sectors, my philosophy centers on focused clarity—selecting
             optimal tools and strategies to solve complex problems efficiently.
@@ -171,6 +171,7 @@ const CV = () => {
                         integration and high-performance rendering.
                       </span>
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -390,9 +391,26 @@ const CV = () => {
                         }`}
                       >
                         {" "}
-                        Configured clusters, load balancing, and monitoring –
+                        Configured clusters, load balancing, and security –
                         Ensured high availability and reduced downtime in
                         distributed systems.
+                      </span>
+                    </div>
+                    <div>
+                      <strong
+                        className={`transition-colors duration-300 ${
+                          isDarkMode ? "text-gray-100" : "text-gray-800"
+                        }`}
+                      >
+                        Monitoring & Observability:
+                      </strong>
+                      <span
+                        className={`transition-colors duration-300 ${
+                          isDarkMode ? "text-gray-300" : "text-gray-700"
+                        }`}
+                      >
+                        {" "}
+                        Splunk, OpenSearch, Fluent Bit – Expertise in deploying and managing end-to-end enterprise monitoring workflows for comprehensive system visibility and proactive issue resolution.
                       </span>
                     </div>
                   </div>
@@ -420,6 +438,57 @@ const CV = () => {
           <div className="relative">
             {/* Continuous timeline line */}
             <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-blue-600"></div>
+
+            <div className="flex mb-8">
+              <div className="flex flex-col items-center mr-6 relative z-10">
+                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">🏦</span>
+                </div>
+              </div>
+              <div className="flex-1">
+                <div className="mb-2">
+                  <span
+                    className={`text-sm font-medium transition-colors duration-300 ${
+                      isDarkMode ? "text-gray-400" : "text-gray-500"
+                    }`}
+                  >
+                    3 years
+                  </span>
+                  <h3
+                    className={`font-semibold transition-colors duration-300 ${
+                      isDarkMode ? "text-gray-100" : "text-gray-800"
+                    }`}
+                  >
+                    Technical Leader
+                  </h3>
+                  <p
+                    className={`italic transition-colors duration-300 ${
+                      isDarkMode ? "text-gray-300" : "text-gray-600"
+                    }`}
+                  >
+                    National Australia Bank
+                  </p>
+                </div>
+                <ul
+                  className={`text-sm space-y-1 transition-colors duration-300 ${
+                    isDarkMode ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
+                  <li>
+                    • Contributed to one of Australia&apos;s top 3 largest banks, driving technical excellence and innovation.
+                  </li>
+                  <li>
+                    • Led a development team on technical aspects, mentoring engineers and establishing best practices for high-quality software delivery.
+                  </li>
+                  <li>
+                    • Architected and built critical applications within the Home Ownership domain, enhancing customer experience and business capabilities.
+                  </li>
+                  <li>
+                    • Tech stack: Java, React (Micro-frontends), Node.js, AWS, Kubernetes.
+                  </li>
+                </ul>
+              </div>
+            </div>
 
             <div className="flex mb-8">
               <div className="flex flex-col items-center mr-6 relative z-10">
@@ -493,7 +562,7 @@ const CV = () => {
                       isDarkMode ? "text-gray-400" : "text-gray-500"
                     }`}
                   >
-                    1 year
+                    1.5 years
                   </span>
                   <h3
                     className={`font-semibold transition-colors duration-300 ${
@@ -507,7 +576,7 @@ const CV = () => {
                       isDarkMode ? "text-gray-300" : "text-gray-600"
                     }`}
                   >
-                    MEXC Global (Remote)
+                    MEXC Global
                   </p>
                 </div>
                 <ul
