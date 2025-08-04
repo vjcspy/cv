@@ -37,7 +37,7 @@ const CV = () => {
           {/* Name and Title */}
           <div className="flex-1 p-8 flex flex-col justify-center">
             <h1 className="text-3xl font-bold mb-2">DINH KHOI</h1>
-            <p className="text-blue-100 text-lg">Senior Engineer</p>
+            <p className="text-blue-100 text-lg">Solution Architect</p>
           </div>
         </div>
 
@@ -448,7 +448,7 @@ const CV = () => {
                       isDarkMode ? "text-gray-300" : "text-gray-600"
                     }`}
                   >
-                    Golden Gate Group (Remote)
+                    Golden Gate Group
                   </p>
                 </div>
                 <ul
