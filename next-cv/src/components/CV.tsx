@@ -14,7 +14,7 @@ const CV = () => {
       }`}
     >
       <div
-        className={`max-w-4xl mx-auto shadow-lg transition-colors duration-300 ${
+        className={`cv-container max-w-4xl mx-auto shadow-lg transition-colors duration-300 ${
           isDarkMode ? "bg-gray-800" : "bg-white"
         }`}
       >
