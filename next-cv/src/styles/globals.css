@@ -18,8 +18,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-carlito);
-  --font-mono: var(--font-carlito);
 }
 
 [data-theme="dark"] {
@@ -36,12 +34,12 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-carlito), Calibri, "Segoe UI", Arial, sans-serif;
+  font-family: Calibri, Carlito, "Segoe UI", Arial, sans-serif;
 }
 
 /* CV-specific typography helpers */
 .cv-container {
-  font-family: var(--font-carlito), Calibri, "Segoe UI", Arial, sans-serif;
+  font-family: Calibri, Carlito, "Segoe UI", Arial, sans-serif;
   font-size: 14.5px;
   line-height: 1.35;
   color: var(--cv-text);

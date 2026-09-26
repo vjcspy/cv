@@ -1,18 +1,15 @@
 import type { AppProps } from 'next/app';
-import { Carlito } from "next/font/google";
 import '../styles/globals.css';
 
-const carlito = Carlito({
-  variable: "--font-carlito",
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  fallback: ["Calibri", "Segoe UI", "Arial", "sans-serif"],
-});
-
+// Note: next/font/google (Carlito) was tried here but caused Vercel production
+// builds to fail (build succeeded locally in every attempt, but the exact same
+// commit failed on Vercel twice in a row with no accessible build log — the
+// Google Fonts build-time fetch is the only network-dependent step introduced
+// by this change). Falling back to the system font stack the plan itself
+// documents as the contingency: `Calibri, Carlito, "Segoe UI", Arial, sans-serif`.
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${carlito.variable} antialiased`}>
+    <div className="antialiased">
       <Component {...pageProps} />
     </div>
   );
