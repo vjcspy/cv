@@ -10,6 +10,7 @@
   --cv-text: #000000;
   --cv-muted: #333333;
   --cv-accent: #ed7d31;
+  --cv-accent-strong: #c55a11;
   --cv-bar-bg: #f4b083;
   --cv-band-bg: #fbe4d5;
   --cv-border: #000000;
@@ -26,6 +27,7 @@
   --cv-text: #e5e7eb;
   --cv-muted: #b8c0cc;
   --cv-accent: #f0975a;
+  --cv-accent-strong: #f4b083;
   --cv-bar-bg: #6b3d1f;
   --cv-band-bg: #3a2a1f;
   --cv-border: #d1d5db;
@@ -50,6 +52,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 22px;
+}
+
+.cv-award {
+  margin: 4px 0 2px;
+  padding: 1px 0 1px 8px;
+  border-left: 3px solid var(--cv-accent);
+}
+
+.cv-award-title {
+  font-weight: 700;
+  color: var(--cv-accent-strong);
 }
 
 .cv-subtitle {
@@ -132,6 +145,7 @@ body {
     --cv-text: #000000 !important;
     --cv-muted: #333333 !important;
     --cv-accent: #ed7d31 !important;
+    --cv-accent-strong: #c55a11 !important;
     --cv-bar-bg: #f4b083 !important;
     --cv-band-bg: #fbe4d5 !important;
     --cv-border: #000000 !important;

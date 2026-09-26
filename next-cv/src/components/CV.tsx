@@ -32,6 +32,14 @@ const ProjectBlock = ({ project }: { project: Project }) => (
         <span className="font-bold">Achievement:</span> {project.achievement}
       </p>
     )}
+    {project.award && (
+      <p className="cv-award">
+        <span className="font-bold">Award:</span>{" "}
+        <span className="cv-award-title">{project.award.title}</span> &mdash;{" "}
+        {project.award.detailPrefix} <strong>{project.award.highlight}</strong>{" "}
+        {project.award.detailSuffix}
+      </p>
+    )}
     <p>
       <span className="font-bold">{project.techStackLabel}</span> {project.techStack}
     </p>

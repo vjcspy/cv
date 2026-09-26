@@ -30,6 +30,14 @@ export interface Project {
   responsibilitiesLabel?: string;
   bullets: string[];
   achievement: string;
+  award?: {
+    title: string;
+    /** Text before the highlighted figure, e.g. "recognising the". */
+    detailPrefix: string;
+    /** Figure rendered in bold, e.g. "top 1%". */
+    highlight: string;
+    detailSuffix: string;
+  };
   techStackLabel: string;
   techStack: string;
 }
@@ -179,7 +187,13 @@ export const cv: CVData = {
         "Implemented enterprise-grade security and compliance standards for banking applications handling sensitive financial data",
       ],
       achievement:
-        "Successfully delivered mission-critical banking applications with 99.9% uptime and zero security incidents. Received the FY26 Honour award, recognising the top 1% of nearly 40,000 employees.",
+        "Successfully delivered mission-critical banking applications with 99.9% uptime and zero security incidents",
+      award: {
+        title: "FY26 Honour Award",
+        detailPrefix: "recognising the",
+        highlight: "top 1%",
+        detailSuffix: "of nearly 40,000 employees",
+      },
       techStackLabel: "Technology Stack:",
       techStack:
         "Node.js, AWS, Redis, WebSocket, PostgreSQL, Java, React, Kubernetes, Splunk, OpenSearch, RabbitMQ, Jenkins, Harness, Terraform.",
