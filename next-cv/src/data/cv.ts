@@ -170,7 +170,7 @@ export const cv: CVData = {
   projects: [
     {
       title: "Enterprise Banking Platform Development",
-      dates: "Aug 2022 – Aug 2025",
+      dates: "Aug 2022 – Sept 2026",
       role: "Technical Leader | Banking & Finance Domain",
       bullets: [
         "Led development team of 15 members contributing to one of Australia's top 3 largest banks, driving technical excellence and innovation within the Home Ownership domain",
