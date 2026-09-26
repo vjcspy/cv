@@ -14,7 +14,7 @@ next-cv/
 │   ├── components/
 │   │   └── CV.tsx                # Renders the data above with PDF-like styling
 │   ├── pages/
-│   │   ├── _app.tsx              # Next.js app wrapper (Carlito font)
+│   │   ├── _app.tsx              # Next.js app wrapper
 │   │   ├── _document.tsx         # Custom document / meta tags
 │   │   └── index.tsx             # Home page
 │   └── styles/
@@ -76,8 +76,8 @@ before committing.
   Print and PDF generation always force the light palette regardless of the on-screen dark-mode toggle.
 - `@page { size: Letter; }` plus `break-inside: avoid` on each project/skill block keeps the printed layout close
   to the original PDF (no orange bars disappearing, no project split across a page boundary).
-- Body font is Google Font **Carlito** (metric-compatible with Calibri, the PDF's body font) via `next/font/google`;
-  the name/subtitle use the system `Arial, Helvetica, sans-serif` stack, matching the PDF.
+- Body font is the system stack `Calibri, Carlito, "Segoe UI", Arial, sans-serif` (Calibri is the PDF's body font;
+  `next/font/google` is intentionally not used); the name/subtitle use `Arial, Helvetica, sans-serif`, matching the PDF.
 
 ## 🌙 Dark Mode
 
