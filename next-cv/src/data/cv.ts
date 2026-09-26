@@ -56,7 +56,7 @@ export const cv: CVData = {
   subtitle: "Solution Architect | Full Stack Engineer",
   contact: {
     phone: "+84 876543 435",
-    email: "dinhkhoi.le1996@gmail.com",
+    email: "mr.vjcspy@gmail.com",
   },
   badges: [
     {
