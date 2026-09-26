@@ -179,7 +179,7 @@ export const cv: CVData = {
         "Implemented enterprise-grade security and compliance standards for banking applications handling sensitive financial data",
       ],
       achievement:
-        "Successfully delivered mission-critical banking applications with 99.9% uptime and zero security incidents",
+        "Successfully delivered mission-critical banking applications with 99.9% uptime and zero security incidents. Received the FY26 Honour award, recognising the top 1% of nearly 40,000 employees.",
       techStackLabel: "Technology Stack:",
       techStack:
         "Node.js, AWS, Redis, WebSocket, PostgreSQL, Java, React, Kubernetes, Splunk, OpenSearch, RabbitMQ, Jenkins, Harness, Terraform.",
