@@ -1,5 +1,42 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { cv, type Project } from "@/data/cv";
+
+const SectionHeader = ({ children }: { children: React.ReactNode }) => (
+  <h2 className="cv-section-header">{children}</h2>
+);
+
+const ProjectBlock = ({ project }: { project: Project }) => (
+  <div className="cv-project-block mb-4">
+    <div className="cv-project-header">
+      <span className="cv-project-title">{project.title}</span>
+      {project.dates && <span className="cv-project-date">{project.dates}</span>}
+    </div>
+    {project.domain && <p className="mt-1">{project.domain}</p>}
+    {project.role && <p className="cv-project-role">{project.role}</p>}
+    {project.description && (
+      <p className="mt-1">
+        <span className="font-bold">Description:</span> {project.description}
+      </p>
+    )}
+    {project.responsibilitiesLabel && (
+      <p className="font-bold mt-1">{project.responsibilitiesLabel}</p>
+    )}
+    <ul className="list-disc pl-6 space-y-1 mt-1">
+      {project.bullets.map((bullet, i) => (
+        <li key={i}>{bullet}</li>
+      ))}
+    </ul>
+    {project.achievement && (
+      <p className="mt-1">
+        <span className="font-bold">Achievement:</span> {project.achievement}
+      </p>
+    )}
+    <p>
+      <span className="font-bold">{project.techStackLabel}</span> {project.techStack}
+    </p>
+  </div>
+);
 
 const CV = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -7,718 +44,123 @@ const CV = () => {
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
+
   return (
     <div
-      className={`min-h-screen py-8 font-[family-name:var(--font-jetbrains-mono)] transition-colors duration-300 ${
+      className={`cv-page-wrapper min-h-screen py-8 transition-colors duration-300 ${
         isDarkMode ? "bg-gray-900" : "bg-gray-50"
       }`}
     >
       <div
-        className={`cv-container max-w-4xl mx-auto shadow-lg transition-colors duration-300 ${
-          isDarkMode ? "bg-gray-800" : "bg-white"
-        }`}
+        className="cv-container max-w-[8.5in] mx-auto shadow-lg transition-colors duration-300 px-10 py-8"
+        data-theme={isDarkMode ? "dark" : "light"}
       >
-        {/* Header Section */}
-        <div className="bg-blue-600 text-white flex">
-          {/* Profile Image */}
-          <div
-            className="flex items-center justify-center flex-shrink-0 overflow-hidden"
-            style={{ width: "150px", height: "150px" }}
-          >
-            <Image
-              src="/avatar.jpg"
-              alt="Dinh Khoi Profile"
-              width={150}
-              height={150}
-              className="object-cover"
-              priority
-            />
+        {/* Header */}
+        <header className="mb-4">
+          <div className="flex flex-wrap items-center gap-4 mb-3">
+            {cv.badges.map((badge) => (
+              <Image
+                key={badge.src}
+                src={badge.src}
+                alt={badge.alt}
+                width={badge.width}
+                height={badge.height}
+                className="h-16 w-auto"
+              />
+            ))}
           </div>
-          {/* Name and Title */}
-          <div className="flex-1 p-8 flex flex-col justify-center">
-            <h1 className="text-3xl font-bold mb-2">DINH KHOI</h1>
-            <p className="text-blue-100 text-lg">Senior Engineer</p>
-          </div>
-        </div>
-
-        {/* Contact Information */}
-        <div
-          className={`p-8 border-b transition-colors duration-300 ${
-            isDarkMode ? "border-gray-600" : "border-gray-200"
-          }`}
-        >
-          <div className="grid grid-cols-1 gap-4 text-sm">
-            <div>
-              <p
-                className={`mb-3 transition-colors duration-300 ${
-                  isDarkMode ? "text-gray-300" : "text-gray-600"
-                }`}
-              >
-                Phone: +84 876543 435
-              </p>
-              <p
-                className={`transition-colors duration-300 ${
-                  isDarkMode ? "text-gray-300" : "text-gray-600"
-                }`}
-              >
-                Email: dinhkhoi.le1996@gmail.com
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Summary Section */}
-        <div
-          className={`p-8 border-b transition-colors duration-300 ${
-            isDarkMode ? "border-gray-600" : "border-gray-200"
-          }`}
-        >
-          <p
-            className={`leading-relaxed transition-colors duration-300 ${
-              isDarkMode ? "text-gray-300" : "text-gray-700"
-            }`}
-          >
-            I am a deeply passionate technologist, dedicating most of my time to
-            immersing myself in learning and developing software. With 7+ years
-            as an expert full-stack developer in high-traffic e-commerce and
-            banking sectors, my philosophy centers on focused clarity—selecting
-            optimal tools and strategies to solve complex problems efficiently.
-            I deliver solutions that are not just technically sound, but elegant
-            and valuable, driving real impact for teams and millions of users.
+          <hr
+            className="mb-3"
+            style={{ borderTopWidth: "2px", borderColor: "var(--cv-accent)" }}
+          />
+          <h1 className="cv-name text-center">{cv.name}</h1>
+          <p className="cv-subtitle text-center mb-2">{cv.subtitle}</p>
+          <p className="text-center text-sm" style={{ color: "var(--cv-muted)" }}>
+            {cv.contact.phone} &nbsp;|&nbsp; {cv.contact.email}
           </p>
-        </div>
+        </header>
 
-        {/* Skills Section */}
-        <div
-          className={`p-8 border-b transition-colors duration-300 ${
-            isDarkMode ? "border-gray-600" : "border-gray-200"
-          }`}
-        >
-          <h2
-            className={`text-xl font-bold mb-6 flex items-center transition-colors duration-300 ${
-              isDarkMode ? "text-gray-100" : "text-gray-800"
-            }`}
-          >
-            <span className="text-blue-600 text-2xl mr-3">♦</span>
-            SKILLS
-          </h2>
+        {/* Professional Summary */}
+        <section className="mb-4">
+          <SectionHeader>Professional Summary</SectionHeader>
+          <ul className="list-disc pl-6 pt-2 space-y-1">
+            {cv.summary.map((line, i) => (
+              <li key={i}>{line}</li>
+            ))}
+          </ul>
+        </section>
 
-          <div className="relative">
-            {/* Continuous timeline line */}
-            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-blue-600"></div>
+        {/* Technical Leadership & Recognition */}
+        <section className="mb-4">
+          <SectionHeader>Technical Leadership &amp; Recognition</SectionHeader>
+          <ul className="list-disc pl-6 pt-2 space-y-1">
+            {cv.leadership.map((line, i) => (
+              <li key={i}>{line}</li>
+            ))}
+          </ul>
+        </section>
 
-            <div className="space-y-8 text-sm">
-              {/* Frontend/Client-side */}
-              <div className="flex">
-                <div className="flex flex-col items-center mr-6 relative z-10">
-                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                    <span className="text-white text-sm font-bold">💻</span>
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3
-                    className={`text-lg font-semibold mb-4 transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-100" : "text-gray-800"
-                    }`}
-                  >
-                    Frontend/Client-side
-                  </h3>
-                  <p
-                    className={`mb-4 leading-relaxed transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-300" : "text-gray-700"
-                    }`}
-                  >
-                    Extensive experience building diverse client-side apps (web,
-                    SPAs, micro frontends, server-side rendering) for
-                    high-traffic e-commerce and banking, delivering scalable UIs
-                    for millions of users.
-                  </p>
-                  <div className="space-y-3">
-                    <div>
-                      <strong
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-100" : "text-gray-800"
-                        }`}
-                      >
-                        JavaScript/TypeScript:
-                      </strong>
-                      <span
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        {" "}
-                        Angular, React, Next.js, Electron, React Native, RxJS,
-                        Redux – Optimized for interactive platforms, real-time
-                        dashboards, and cross-platform compatibility.
-                      </span>
-                    </div>
-                    <div>
-                      <strong
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-100" : "text-gray-800"
-                        }`}
-                      >
-                        C#:
-                      </strong>
-                      <span
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        {" "}
-                        Avalonia – For desktop apps with seamless backend
-                        integration and high-performance rendering.
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Server/Application */}
-              <div className="flex">
-                <div className="flex flex-col items-center mr-6 relative z-10">
-                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                    <span className="text-white text-sm font-bold">⚙️</span>
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3
-                    className={`text-lg font-semibold mb-4 transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-100" : "text-gray-800"
-                    }`}
-                  >
-                    Server/Application
-                  </h3>
-                  <p
-                    className={`mb-4 leading-relaxed transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-300" : "text-gray-700"
-                    }`}
-                  >
-                    Versatile expertise in multiple languages for scalable
-                    backends handling high concurrency, real-time processing,
-                    and secure transactions in finance, gaming, and trading.
-                  </p>
-                  <div className="space-y-3">
-                    <div>
-                      <strong
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-100" : "text-gray-800"
-                        }`}
-                      >
-                        Node.js:
-                      </strong>
-                      <span
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        {" "}
-                        HTTP servers for banking, real-time (Meteor), game
-                        servers for Unity – Optimized for low-latency in
-                        high-stakes environments.
-                      </span>
-                    </div>
-                    <div>
-                      <strong
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-100" : "text-gray-800"
-                        }`}
-                      >
-                        C#:
-                      </strong>
-                      <span
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        {" "}
-                        Unity apps – Focused on game logic, multiplayer, and
-                        cross-platform deployment.
-                      </span>
-                    </div>
-                    <div>
-                      <strong
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-100" : "text-gray-800"
-                        }`}
-                      >
-                        Java:
-                      </strong>
-                      <span
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        {" "}
-                        Quarkus, Spring Boot for banking microservices –
-                        Enhanced security and scalability for enterprise
-                        transactions.
-                      </span>
-                    </div>
-                    <div>
-                      <strong
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-100" : "text-gray-800"
-                        }`}
-                      >
-                        PHP:
-                      </strong>
-                      <span
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        {" "}
-                        Magento 2 (Adobe) for e-commerce – Improved performance
-                        and payment integrations.
-                      </span>
-                    </div>
-                    <div>
-                      <strong
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-100" : "text-gray-800"
-                        }`}
-                      >
-                        Python:
-                      </strong>
-                      <span
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        {" "}
-                        Automated trading systems for crypto markets – With data
-                        analysis and API for high-frequency efficiency.
-                      </span>
-                    </div>
-                    <div>
-                      <strong
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-100" : "text-gray-800"
-                        }`}
-                      >
-                        Databases:
-                      </strong>
-                      <span
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        {" "}
-                        PostgreSQL, MySQL – Schema design, query optimization,
-                        and data management for large-scale apps.
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Infrastructure */}
-              <div className="flex">
-                <div className="flex flex-col items-center mr-6 relative z-10">
-                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                    <span className="text-white text-sm font-bold">🏗️</span>
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3
-                    className={`text-lg font-semibold mb-4 transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-100" : "text-gray-800"
-                    }`}
-                  >
-                    Infrastructure (Infra)
-                  </h3>
-                  <p
-                    className={`mb-4 leading-relaxed transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-300" : "text-gray-700"
-                    }`}
-                  >
-                    Proven expertise in enterprise infra management for tens of
-                    millions of users, focusing on reliability, scalability, and
-                    automation with key certifications.
-                  </p>
-                  <div className="space-y-3">
-                    <div>
-                      <strong
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-100" : "text-gray-800"
-                        }`}
-                      >
-                        Cloud:
-                      </strong>
-                      <span
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        {" "}
-                        AWS (Certified Developer/Solutions Architect) – Deployed
-                        scalable setups with cost optimization and security.
-                      </span>
-                    </div>
-                    <div>
-                      <strong
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-100" : "text-gray-800"
-                        }`}
-                      >
-                        DevOps & Orchestration:
-                      </strong>
-                      <span
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        {" "}
-                        Jenkins, Harness (Certified), Kubernetes (Certified),
-                        Terraform (Certified) – Automated CI/CD, container
-                        deployments, and IaC for zero-downtime scaling.
-                      </span>
-                    </div>
-                    <div>
-                      <strong
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-100" : "text-gray-800"
-                        }`}
-                      >
-                        Networking & Servers:
-                      </strong>
-                      <span
-                        className={`transition-colors duration-300 ${
-                          isDarkMode ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        {" "}
-                        Configured clusters, load balancing, and monitoring –
-                        Ensured high availability and reduced downtime in
-                        distributed systems.
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Experience Section */}
-        <div
-          className={`p-8 border-b transition-colors duration-300 ${
-            isDarkMode ? "border-gray-600" : "border-gray-200"
-          }`}
-        >
-          <h2
-            className={`text-xl font-bold mb-6 flex items-center transition-colors duration-300 ${
-              isDarkMode ? "text-gray-100" : "text-gray-800"
-            }`}
-          >
-            <span className="text-blue-600 text-2xl mr-3">♦</span>
-            EXPERIENCE
-          </h2>
-
-          <div className="relative">
-            {/* Continuous timeline line */}
-            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-blue-600"></div>
-
-            <div className="flex mb-8">
-              <div className="flex flex-col items-center mr-6 relative z-10">
-                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">💼</span>
-                </div>
-              </div>
-              <div className="flex-1">
-                <div className="mb-2">
-                  <span
-                    className={`text-sm font-medium transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-400" : "text-gray-500"
-                    }`}
-                  >
-                    2 years
-                  </span>
-                  <h3
-                    className={`font-semibold transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-100" : "text-gray-800"
-                    }`}
-                  >
-                    Consultant Engineer
-                  </h3>
-                  <p
-                    className={`italic transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-300" : "text-gray-600"
-                    }`}
-                  >
-                    Golden Gate Group (Remote)
-                  </p>
-                </div>
-                <ul
-                  className={`text-sm space-y-1 transition-colors duration-300 ${
-                    isDarkMode ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  <li>
-                    • Consulted for Vietnam&apos;s largest F&B and restaurant
-                    chain, operating nearly 500 locations and major brands like
-                    The Coffee House, serving millions of customers.
-                  </li>
-                  <li>
-                    • Led a cross-functional engineering team, providing
-                    technical leadership and strategic solutions for systems
-                    supporting millions of users and thousands of concurrent
-                    connections per second.
-                  </li>
-                  <li>
-                    • Provided technical solutions and managed system builds for
-                    retail operations, enhancing performance and user
-                    experience.
-                  </li>
-                  <li>
-                    • Tech stack: Magento e-commerce platform, React, Angular,
-                    Node.js (HTTP), React Native.
-                  </li>
+        {/* Core Technical Skills */}
+        <section className="mb-4">
+          <SectionHeader>Core Technical Skills</SectionHeader>
+          <div className="pt-2 space-y-3">
+            {cv.skillGroups.map((group) => (
+              <div key={group.title} className="cv-skill-group">
+                <p className="font-bold">{group.title}</p>
+                <ul className="list-disc pl-6 space-y-0.5">
+                  {group.items.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
                 </ul>
               </div>
-            </div>
-
-            <div className="flex mb-8">
-              <div className="flex flex-col items-center mr-6 relative z-10">
-                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">🌐</span>
-                </div>
-              </div>
-              <div className="flex-1">
-                <div className="mb-2">
-                  <span
-                    className={`text-sm font-medium transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-400" : "text-gray-500"
-                    }`}
-                  >
-                    1 year
-                  </span>
-                  <h3
-                    className={`font-semibold transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-100" : "text-gray-800"
-                    }`}
-                  >
-                    Senior Engineer
-                  </h3>
-                  <p
-                    className={`italic transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-300" : "text-gray-600"
-                    }`}
-                  >
-                    MEXC Global (Remote)
-                  </p>
-                </div>
-                <ul
-                  className={`text-sm space-y-1 transition-colors duration-300 ${
-                    isDarkMode ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  <li>
-                    • Contributed to a leading global cryptocurrency exchange,
-                    operating in a complex, high-stakes enterprise environment
-                    serving millions of traders worldwide.
-                  </li>
-                  <li>
-                    • Developed and maintained high-throughput APIs using Python
-                    and Java, providing critical, real-time data for core
-                    cryptocurrency trading services.
-                  </li>
-                  <li>
-                    • Built micro frontend mini-apps for internal use,
-                    integrating with complex infrastructure and complete
-                    workflows including testing (blackbox, E2E, unit,
-                    integration) and monitoring (Splunk, OpenSearch).
-                  </li>
-                  <li>
-                    • Optimized deployments in a high-scale setup to ensure
-                    reliability and efficiency.
-                  </li>
-                  <li>
-                    • Tech stack: Python, Java, Kubernetes, Docker, Harness,
-                    React.
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="flex">
-              <div className="flex flex-col items-center mr-6 relative z-10">
-                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">⚡</span>
-                </div>
-              </div>
-              <div className="flex-1">
-                <div className="mb-2">
-                  <span
-                    className={`text-sm font-medium transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-400" : "text-gray-500"
-                    }`}
-                  >
-                    3 years
-                  </span>
-                  <h3
-                    className={`font-semibold transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-100" : "text-gray-800"
-                    }`}
-                  >
-                    Solution Engineer
-                  </h3>
-                  <p
-                    className={`italic transition-colors duration-300 ${
-                      isDarkMode ? "text-gray-300" : "text-gray-600"
-                    }`}
-                  >
-                    SmartOSC
-                  </p>
-                </div>
-                <ul
-                  className={`text-sm space-y-1 transition-colors duration-300 ${
-                    isDarkMode ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  <li>
-                    • Worked for Asia&apos;s leading Adobe Partner, specializing
-                    in delivering enterprise-level Magento e-commerce solutions
-                    for global retail clients.
-                  </li>
-                  <li>
-                    • Acted as a technical lead, architecting and delivering
-                    end-to-end e-commerce solutions for enterprise clients on
-                    the Magento 2 platform.
-                  </li>
-                  <li>
-                    • Designed and implemented a comprehensive retail ecosystem,
-                    integrating third-party services such as payment gateways,
-                    shipping solutions, and Point-of-Sale (POS) systems.
-                  </li>
-                  <li>
-                    • Led a development team in building highly customized,
-                    real-time applications and interactive frontends using
-                    Angular to enhance customer engagement.
-                  </li>
-                  <li>
-                    • Tech stack: Magento, Angular, real-time applications.
-                  </li>
-                </ul>
-              </div>
-            </div>
+            ))}
           </div>
-        </div>
+        </section>
 
-        {/* Education Section */}
-        <div className="p-8">
-          <h2
-            className={`text-xl font-bold mb-4 flex items-center transition-colors duration-300 ${
-              isDarkMode ? "text-gray-100" : "text-gray-800"
-            }`}
-          >
-            <span className="text-blue-600 text-2xl mr-3">♦</span>
-            EDUCATION
-          </h2>
-          <div className="relative">
-            {/* Continuous timeline line */}
-            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-blue-600"></div>
-
-            {/* Academy of Finance */}
-            <div className="flex mb-8">
-              <div className="flex flex-col items-center mr-6 relative z-10">
-                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">🎓</span>
-                </div>
-              </div>
-              <div className="flex-1">
-                <h3
-                  className={`font-semibold transition-colors duration-300 ${
-                    isDarkMode ? "text-gray-100" : "text-gray-800"
-                  }`}
-                >
-                  Academy of Finance
-                </h3>
-                <p
-                  className={`italic transition-colors duration-300 ${
-                    isDarkMode ? "text-gray-300" : "text-gray-600"
-                  }`}
-                >
-                  Securities Specialization
-                </p>
-                <p
-                  className={`text-sm mt-1 transition-colors duration-300 ${
-                    isDarkMode ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  <strong>Focus:</strong> Financial markets, investment
-                  analysis, securities trading, and portfolio management.
-                </p>
-              </div>
-            </div>
-
-            {/* Certifications */}
-            <div className="flex">
-              <div className="flex flex-col items-center mr-6 relative z-10">
-                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">📜</span>
-                </div>
-              </div>
-              <div className="flex-1">
-                <h3
-                  className={`font-semibold transition-colors duration-300 ${
-                    isDarkMode ? "text-gray-100" : "text-gray-800"
-                  }`}
-                >
-                  Professional Certifications
-                </h3>
-                <div className="space-y-2 mt-2">
-                  <div className="flex items-center">
-                    <span className="text-blue-600 mr-2">•</span>
-                    <span
-                      className={`text-sm transition-colors duration-300 ${
-                        isDarkMode ? "text-gray-300" : "text-gray-700"
-                      }`}
-                    >
-                      <strong>AWS Certified:</strong> Cloud Solutions
-                      Architecture and Development
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-blue-600 mr-2">•</span>
-                    <span
-                      className={`text-sm transition-colors duration-300 ${
-                        isDarkMode ? "text-gray-300" : "text-gray-700"
-                      }`}
-                    >
-                      <strong>Harness Certified:</strong> Continuous Delivery
-                      and DevOps Platform
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-blue-600 mr-2">•</span>
-                    <span
-                      className={`text-sm transition-colors duration-300 ${
-                        isDarkMode ? "text-gray-300" : "text-gray-700"
-                      }`}
-                    >
-                      <strong>Kubernetes (K8S) Certified:</strong> Container
-                      Orchestration and Management
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-blue-600 mr-2">•</span>
-                    <span
-                      className={`text-sm transition-colors duration-300 ${
-                        isDarkMode ? "text-gray-300" : "text-gray-700"
-                      }`}
-                    >
-                      <strong>Terraform Certified:</strong> Infrastructure as
-                      Code and Cloud Automation
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* Education */}
+        <section className="mb-4">
+          <SectionHeader>Education</SectionHeader>
+          <div className="pt-2">
+            <p className="font-bold">
+              {cv.education.school}, {cv.education.program}
+            </p>
+            <p>
+              <span className="font-bold">Focus:</span> {cv.education.focus}
+            </p>
           </div>
-        </div>
+        </section>
+
+        {/* Certifications & Professional Development */}
+        <section className="mb-4">
+          <SectionHeader>Certifications &amp; Professional Development</SectionHeader>
+          <ul className="list-disc pl-6 pt-2 space-y-1">
+            {cv.certifications.map((c, i) => (
+              <li key={i}>
+                <span className="font-bold">{c.label}</span> {c.detail}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Projects */}
+        <section className="mb-4">
+          <SectionHeader>Projects</SectionHeader>
+          <div className="pt-2">
+            {cv.projects.map((project) => (
+              <ProjectBlock key={project.title} project={project} />
+            ))}
+          </div>
+        </section>
+
+        {/* Personal Projects */}
+        <section>
+          <SectionHeader>Personal Projects</SectionHeader>
+          <div className="pt-2">
+            {cv.personalProjects.map((project) => (
+              <ProjectBlock key={project.title} project={project} />
+            ))}
+          </div>
+        </section>
       </div>
 
       {/* Floating Action Buttons */}
@@ -754,7 +196,7 @@ const CV = () => {
           href="/cv.pdf"
           download="Dinh_Khoi_CV.pdf"
           className="min-w-[48px] min-h-[48px] px-5 py-4 rounded-full shadow-lg flex items-center justify-center gap-2 transition-all duration-200 hover:scale-105 active:scale-95 touch-manipulation"
-          style={{backgroundColor: '#F4AC62'}}
+          style={{ backgroundColor: "#F4AC62" }}
           title="Download CV as PDF"
           aria-label="Download CV as PDF"
         >

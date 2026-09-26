@@ -1,25 +1,18 @@
 import type { AppProps } from 'next/app';
-import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
+import { Carlito } from "next/font/google";
 import '../styles/globals.css';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const carlito = Carlito({
+  variable: "--font-carlito",
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
+  fallback: ["Calibri", "Segoe UI", "Arial", "sans-serif"],
 });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} antialiased`}>
+    <div className={`${carlito.variable} antialiased`}>
       <Component {...pageProps} />
     </div>
   );

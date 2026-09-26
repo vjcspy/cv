@@ -3,26 +3,103 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* CV palette, sampled from the source PDF (Office "Orange Accent 2" + tints) */
+  --cv-bg: #ffffff;
+  --cv-paper: #ffffff;
+  --cv-text: #000000;
+  --cv-muted: #333333;
+  --cv-accent: #ed7d31;
+  --cv-bar-bg: #f4b083;
+  --cv-band-bg: #fbe4d5;
+  --cv-border: #000000;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-carlito);
+  --font-mono: var(--font-carlito);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="dark"] {
+  --cv-bg: #111827;
+  --cv-paper: #1f2937;
+  --cv-text: #e5e7eb;
+  --cv-muted: #b8c0cc;
+  --cv-accent: #f0975a;
+  --cv-bar-bg: #6b3d1f;
+  --cv-band-bg: #3a2a1f;
+  --cv-border: #d1d5db;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-carlito), Calibri, "Segoe UI", Arial, sans-serif;
+}
+
+/* CV-specific typography helpers */
+.cv-container {
+  font-family: var(--font-carlito), Calibri, "Segoe UI", Arial, sans-serif;
+  font-size: 14.5px;
+  line-height: 1.35;
+  color: var(--cv-text);
+  background: var(--cv-paper);
+}
+
+.cv-name {
   font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.cv-subtitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.cv-section-header {
+  background: var(--cv-bar-bg);
+  color: var(--cv-text);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 4px 10px;
+  border-bottom: 1px solid var(--cv-border);
+  break-after: avoid;
+}
+
+.cv-project-header {
+  background: var(--cv-band-bg);
+  color: var(--cv-text);
+  padding: 3px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cv-project-title {
+  font-weight: 700;
+}
+
+.cv-project-date {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cv-project-role {
+  font-weight: 700;
+  font-style: italic;
+  margin-top: 4px;
+}
+
+.cv-project-block,
+.cv-skill-group {
+  break-inside: avoid;
 }
 
 @media print {
@@ -30,16 +107,47 @@ body {
     display: none !important;
   }
 
-  body,
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .cv-page-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    min-height: 0 !important;
+  }
+
   .cv-container {
     margin: 0 !important;
     padding: 0 !important;
     box-shadow: none !important;
     border: none !important;
-  }
-
-  .cv-container {
     max-width: 100% !important;
     width: 100% !important;
+    /* PDF generation / print must always use the light palette */
+    --cv-bg: #ffffff !important;
+    --cv-paper: #ffffff !important;
+    --cv-text: #000000 !important;
+    --cv-muted: #333333 !important;
+    --cv-accent: #ed7d31 !important;
+    --cv-bar-bg: #f4b083 !important;
+    --cv-band-bg: #fbe4d5 !important;
+    --cv-border: #000000 !important;
+  }
+
+  .cv-container,
+  .cv-container * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  @page {
+    size: Letter;
+    margin: 0.5in 0.6in;
   }
 }

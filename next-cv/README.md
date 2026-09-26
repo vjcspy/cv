@@ -1,181 +1,86 @@
 # Next.js CV Application
 
-A modern, responsive CV/Resume application built with Next.js, TypeScript, and Tailwind CSS. Features dark mode toggle and PDF download functionality.
+Dinh Khoi's CV, rendered as a Next.js site styled to match the print CV (`.assets/CV_FullStack_Dinh Khoi (Mr.).pdf`
+in the repo root). Features a dark mode toggle and a "Download PDF" button that serves a PDF printed from this
+site itself.
 
 ## 🏗️ Project Structure
 
 ```
 next-cv/
 ├── src/
+│   ├── data/
+│   │   └── cv.ts                 # All CV content (single source of truth)
 │   ├── components/
-│   │   └── CV.tsx              # Main CV component
+│   │   └── CV.tsx                # Renders the data above with PDF-like styling
 │   ├── pages/
-│   │   ├── _app.tsx             # Next.js app wrapper
-│   │   ├── _document.tsx        # Custom document
-│   │   └── index.tsx            # Home page
+│   │   ├── _app.tsx              # Next.js app wrapper (Carlito font)
+│   │   ├── _document.tsx         # Custom document / meta tags
+│   │   └── index.tsx             # Home page
 │   └── styles/
-│       └── globals.css          # Global styles
-├── public/                      # Static assets
+│       └── globals.css           # Palette CSS variables, print rules
+├── public/
+│   ├── badges/                   # Certification badge images
+│   └── cv.pdf                    # Regenerated from the live site (see below)
 ├── package.json
 └── README.md
 ```
 
-## 🎨 UI Structure Overview
+## ✏️ Editing content
 
-The CV application consists of a single-page layout with the following sections:
-
-### 1. Header Section
-- **Profile Photo Placeholder**: 150px width, positioned on the left
-- **Name & Title**: "JILL MORGAN" with "Marketing Manager" subtitle
-- **Background**: Blue gradient (`bg-blue-600`)
-- **Layout**: Flexbox with photo on left, text content on right
-
-### 2. Contact Information
-- **Grid Layout**: 2-column responsive grid
-- **Content**: Phone, Email, Address, LinkedIn
-- **Styling**: Gray text with proper spacing
-
-### 3. Summary Section
-- **Content**: Professional summary paragraph
-- **Styling**: Clean typography with proper line height
-
-### 4. Skills Section
-- **Timeline Design**: Vertical timeline with blue line and circular icons
-- **Three Main Categories**:
-  1. **Frontend/Client-side** 💻
-     - JavaScript/TypeScript (Angular, React, Next.js, etc.)
-     - C# (Avalonia)
-  2. **Server/Application** ⚙️
-     - Node.js, C#, Java, PHP, Python
-     - Database technologies
-  3. **Infrastructure** 🏗️
-     - Cloud (AWS)
-     - DevOps & Orchestration
-     - Networking & Servers
-
-### 5. Experience Section
-- **Timeline Layout**: Consistent with skills section
-- **Three Positions**:
-  1. Senior Sales Representative (2018-present)
-  2. Customer Relationship Officer (2016-2018)
-  3. Part-time Retail Associate (2014-2016)
-- **Content Structure**: Date, title, company, bullet points, key achievements
-
-### 6. Education Section
-- **Two Main Entries**:
-  1. **Academy of Finance** - Securities Specialization
-  2. **Professional Certifications** - AWS, Harness, K8S, Terraform
-- **Layout**: Timeline design with icons and detailed descriptions
-
-### 7. Floating Action Buttons
-- **Position**: Fixed bottom-right corner
-- **Two Buttons**:
-  1. **Dark Mode Toggle**: Sun/Moon icons with yellow/gray styling
-  2. **PDF Download**: Download icon linking to `/cv.pdf`
-- **Features**: Hover effects, smooth transitions, responsive design
-
-## 🌙 Dark Mode Implementation
-
-### State Management
-- Uses React `useState` hook for `isDarkMode` state
-- Toggle function: `toggleDarkMode()`
-
-### Color Scheme
-- **Light Mode**: 
-  - Background: `bg-gray-50` (main), `bg-white` (content)
-  - Text: `text-gray-800` (headers), `text-gray-700` (body)
-  - Borders: `border-gray-200`
-
-- **Dark Mode**:
-  - Background: `bg-gray-900` (main), `bg-gray-800` (content)
-  - Text: `text-gray-100` (headers), `text-gray-300` (body)
-  - Borders: `border-gray-600`
-
-### Transition Effects
-- All color changes use `transition-colors duration-300`
-- Smooth animations for better UX
-
-## 🎯 Key Features
-
-1. **Responsive Design**: Mobile-first approach with Tailwind CSS
-2. **Dark Mode**: Complete theme switching with smooth transitions
-3. **Timeline Layout**: Professional timeline design for skills and experience
-4. **PDF Download**: Direct link to downloadable CV
-5. **Modern Typography**: Clean, readable font styling
-6. **Accessibility**: Proper semantic HTML and ARIA labels
-
-## 🛠️ Technical Stack
-
-- **Framework**: Next.js 15.4.5 (Pages Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS v4
-- **UI Library**: React 19.1.0
-- **Build Tool**: Turbopack (Next.js)
+All CV content (summary, skills, projects, certifications, etc.) lives in **`src/data/cv.ts`** as a single typed
+object. Edit that file to update the CV — `CV.tsx` only renders it, no content is hardcoded in JSX.
 
 ## 🚀 Development
 
 ```bash
-# Install dependencies
+# Install dependencies (npm only — this repo uses package-lock.json)
 npm install
 
 # Run development server
 npm run dev
 
+# Lint
+npm run lint
+
 # Build for production
 npm run build
 
-# Start production server
+# Start production server (used for PDF regeneration below)
 npm start
 ```
 
-## 📱 Responsive Breakpoints
+## 📄 Regenerating `public/cv.pdf`
 
-- **Mobile**: Default styling
-- **Tablet**: Grid adjustments for contact info
-- **Desktop**: Full layout with optimal spacing
+The PDF is printed from the running site using headless Chrome, so it always matches what's on screen:
 
-## 🎨 Design Principles
+```bash
+npm run build
+npm start            # serves the production build on http://localhost:3000
+npm run pdf          # in another terminal: prints the page to public/cv.pdf
+```
 
-1. **Clean & Professional**: Minimal design focusing on content
-2. **Consistent Spacing**: Uniform padding and margins throughout
-3. **Visual Hierarchy**: Clear typography scale and color contrast
-4. **Interactive Elements**: Hover states and smooth transitions
-5. **Print-Friendly**: Hidden elements for PDF generation
+`npm run pdf` runs:
 
-## 🔧 Customization Guide
+```
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --no-pdf-header-footer --print-to-pdf=public/cv.pdf http://localhost:3000
+```
 
-### Adding New Sections
-1. Follow the existing timeline pattern
-2. Use consistent spacing (`p-8`, `mb-6`)
-3. Apply dark mode classes with conditional rendering
-4. Include proper semantic HTML structure
+Requires `npm start` to be running first (adjust the Chrome path for your OS). After regenerating, verify with
+`pdfinfo public/cv.pdf` (expect US Letter, ~4 pages) and inspect each page (e.g. `pdftoppm -r 100 -png public/cv.pdf out`)
+before committing.
 
-### Modifying Colors
-- Primary: Blue (`bg-blue-600`, `text-blue-600`)
-- Backgrounds: Gray scale for light/dark modes
-- Text: Hierarchical gray scale
+## 🎨 Styling notes
 
-### Extending Functionality
-- Add new floating buttons in the action buttons container
-- Implement additional state management as needed
-- Follow existing pattern for transitions and hover effects
+- Colors are CSS variables in `globals.css` (light palette sampled from the source PDF, plus dark-mode overrides).
+  Print and PDF generation always force the light palette regardless of the on-screen dark-mode toggle.
+- `@page { size: Letter; }` plus `break-inside: avoid` on each project/skill block keeps the printed layout close
+  to the original PDF (no orange bars disappearing, no project split across a page boundary).
+- Body font is Google Font **Carlito** (metric-compatible with Calibri, the PDF's body font) via `next/font/google`;
+  the name/subtitle use the system `Arial, Helvetica, sans-serif` stack, matching the PDF.
 
-## 📄 Content Structure
+## 🌙 Dark Mode
 
-The CV content is hardcoded in the `CV.tsx` component. To make it dynamic:
-1. Extract content to JSON/API
-2. Create interfaces for type safety
-3. Implement content management system
+A floating button (bottom-right, hidden in print) toggles `data-theme="dark"` on the CV container, which swaps the
+CSS variables above to a dark palette. The floating buttons and dark mode never appear in the printed/PDF output.
 
-## 🎯 Future Enhancements
-
-- [ ] Dynamic content management
-- [ ] Multiple CV templates
-- [ ] Real PDF generation
-- [ ] Print optimization
-- [ ] Animation improvements
-- [ ] Accessibility enhancements
-
----
-
-**Note**: This project uses Next.js Pages Router architecture. The main CV component is located in `src/components/CV.tsx` and is rendered through `src/pages/index.tsx`.
